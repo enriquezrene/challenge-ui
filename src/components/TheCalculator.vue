@@ -88,7 +88,7 @@ export default {
       console.log( 'perform')
       try {
         console.log( 'fetching')
-        const operationResponse = await fetch('http://localhost:3000/operations', {
+        const operationResponse = await fetch('https://azx2495nd9.execute-api.us-east-1.amazonaws.com/operations', {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${store.state.token}`,

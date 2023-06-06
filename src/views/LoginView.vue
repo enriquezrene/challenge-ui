@@ -52,7 +52,7 @@ export default {
     },
     async login() {
       try {
-        const loginResponse = await fetch('http://localhost:3000/login', {
+        const loginResponse = await fetch('https://azx2495nd9.execute-api.us-east-1.amazonaws.com/login', {
           method: 'POST',
           headers: {
             'Accept': 'application/json',

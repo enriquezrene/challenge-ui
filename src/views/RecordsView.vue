@@ -100,7 +100,7 @@ export default {
     },
     async loadData() {
       try {
-        const recordsResponse = await fetch(`http://localhost:3000/records?page=${this.currentPage}&items=${this.items}`, {
+        const recordsResponse = await fetch(`https://azx2495nd9.execute-api.us-east-1.amazonaws.com/records?page=${this.currentPage}&items=${this.items}`, {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${store.state.token}`,
