@@ -1,6 +1,7 @@
 <template>
   <div class="container">
 
+    <hr>
     <table class="table table-striped">
       <thead>
       <tr>
@@ -21,6 +22,10 @@
           <a href="#" @click="sortList('date')"><img src="../assets/sort.png"></a>
           Operation Date
         </th>
+        <th>
+
+        </th>
+
       </tr>
       </thead>
       <tbody>
@@ -31,6 +36,7 @@
         <td>{{ record.amount }}</td>
         <td>{{ record.operation_response }}</td>
         <td>{{ record.date }}</td>
+        <td><button type="button" @click="remove(record.id)" class="btn btn-danger btn-sm">Remove</button></td>
       </tr>
 
       </tbody>
@@ -85,6 +91,17 @@ export default {
   },
 
   methods: {
+    async remove(recordId) {
+      await fetch(`https://azx2495nd9.execute-api.us-east-1.amazonaws.com/records?recordId=${recordId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${store.state.token}`,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      });
+      await this.loadData()
+    },
     sortList(sortBy) {
       if (this.sortedByAsc) {
         this.response.data.sort((x, y) => (x[sortBy] > y[sortBy] ? -1 : 1));
