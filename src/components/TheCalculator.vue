@@ -1,5 +1,6 @@
 <template>
   <div class="container-fluid">
+    <hr>
     <div class="row">
       <div>
 
