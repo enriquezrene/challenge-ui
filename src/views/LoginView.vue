@@ -1,21 +1,22 @@
 <template>
 
   <div class="container">
+
+    <hr>
     <h4>{{ message }}</h4>
-    <div class="form-horizontal">
-      <div class="form-group">
-        <label for="username">Username:</label>
-        <input v-model="username" class="form-control" id="username">
-      </div>
-      <div class="form-group">
-        <label for="pwd">Password:</label>
-        <input v-model="password" class="form-control" id="pwd">
-      </div>
-      <div class="form-group">
-        <button type="button" @click="login" class="btn btn-primary">Login</button>
-        <button type="button" @click="logout" class="btn btn-info">Logout</button>
-      </div>
+
+    <div class="mb-3 mt-3">
+      <label for="username" class="form-label">Username:</label>
+      <input v-model="username" class="form-control" id="username">
     </div>
+    <div class="mb-3">
+      <label for="pwd" class="form-label">Password:</label>
+      <input v-model="password" class="form-control" id="pwd">
+    </div>
+
+    <button type="button" @click="login" class="btn btn-primary">Login</button>
+    <button type="button" @click="logout" class="btn btn-warning" style="margin-left: 10px">Logout</button>
+
     <hr>
     <h4>Users available in the App</h4>
     <p>
@@ -64,6 +65,8 @@ export default {
           const responseAsJson = JSON.parse(JSON.stringify(await loginResponse.json()))
           const token = responseAsJson.token
           store.mutations.saveLogin(this.username, token)
+          this.username = undefined
+          this.password = undefined
         } else {
           this.username = undefined
           this.password = undefined
